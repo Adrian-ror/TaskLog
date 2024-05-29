@@ -35,7 +35,7 @@ export default function Header() {
 
                 {/* App Phrase  */}
                 <div className="lg:flex lg:flex-1 lg:justify-end ">
-                    <p className=" flex text-teal-600 text-2xl italic font-medium justify-items items-center">
+                    <p className=" flex text-green-800 text-2xl italic font-medium justify-items items-center">
                         {'{'} I wish you have an tidy day {'}'}
                     </p>
                     <div className="flex lg:flex-1">

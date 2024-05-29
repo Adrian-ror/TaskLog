@@ -22,6 +22,8 @@ export default {
     require('@tailwindcss/container-queries'),
     // eslint-disable-next-line no-undef
     require("tw-elements/plugin.cjs"),
+    // eslint-disable-next-line no-undef
+    require('@tailwindcss/typography'),
   ],
 }
 
