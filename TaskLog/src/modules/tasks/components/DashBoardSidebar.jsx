@@ -28,7 +28,7 @@ const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
   return (
     <aside className="sidebar rounded-lg fixed lg:static w-[300px] h-full 0 z-45 overflow-y-auto flex flex-col justify-center ">
       <div className="bg-white rounded-xl shadow-lg mb-6 p-4 ">
-        <SidebarMenuItem label="Home" icon={faHouse} route="/home" />
+        <SidebarMenuItem label="Home" icon={faHouse} route="/" />
 
         <SidebarMenuItem
           label="Dashboard"
