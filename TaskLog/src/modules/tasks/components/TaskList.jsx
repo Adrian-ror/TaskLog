@@ -4,7 +4,7 @@ import EditForm from './EditForm.jsx'
 
 const TaskList = ({ filteredTasks, editingTaskId, setEditingTaskId }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {filteredTasks.map((task) => (
         <div key={task.id}>
           {editingTaskId === task.id ? (
