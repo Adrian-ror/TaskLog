@@ -1,17 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import {
   faHouse,
   faTableColumns,
-  faTriangleExclamation,
-  faEye,
-  faTrashCan,
-  faChevronDown,
-  faChevronUp,
-  faBroom,
   faChartSimple,
-  faScrewdriverWrench
+  faScrewdriverWrench,
+  faEye
 } from '@fortawesome/free-solid-svg-icons'
 import NotImplementedModal from '../../common/components/NotImplementedModal.jsx'
 import { useTaskStore } from '../../../store/useTaskStore.js'
@@ -26,7 +20,7 @@ const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false)
 
   return (
-    <aside className="sidebar rounded-lg fixed lg:static w-[300px] h-full 0 z-45 overflow-y-auto flex flex-col justify-center ">
+    <aside className="sidebar rounded-lg w-[300px] h-full z-45 overflow-y-auto flex flex-col justify-center lg:relative">
       <div className="bg-white rounded-xl shadow-lg mb-6 p-4 ">
         <SidebarMenuItem label="Home" icon={faHouse} route="/" />
 

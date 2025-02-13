@@ -32,7 +32,7 @@ const DashBoard = () => {
         }}
         tasks={tasks}
       />
-      <div className="flex-1 px-8">
+      <div className="flex-1 pl-8">
         <DashBoardHeader filteredTasks={filteredTasks} tasks={tasks} />
         <TaskFilters sort={sort} handleSortChange={handleSortChange} />
         <TaskList
