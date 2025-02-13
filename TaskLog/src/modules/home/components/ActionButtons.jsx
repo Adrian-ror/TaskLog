@@ -18,7 +18,7 @@ const ActionButtons = () => {
         View on GitHub
       </Link>
       <Link
-        to="/dash-board"
+        to="/"
         className="inline-flex bg-green-300 items-center border border-gray-500 justify-center w-full px-5 py-3 text-3xl font-medium text-center text-gray-900 rounded-lg sm:w-auto hover:bg-indigo-200 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:scale-110 transition-transform duration-200"
       >
         <FontAwesomeIcon icon={faTableColumns} className="w-10 h-10 mr-3" />

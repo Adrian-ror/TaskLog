@@ -21,7 +21,7 @@ const Body = () => {
     <div style={fullScreenBackgroundStyle} className="w-full h-full">
       <Routes location={location}>
         <Route
-          path="/"
+          path="/about"
           element={
             <motion.div
               initial={{ y: 0, opacity: 1 }}
@@ -47,7 +47,7 @@ const Body = () => {
           }
         />
         <Route
-          path="/dash-board"
+          path="/"
           element={
             <motion.div
               initial={{ y: 1000, opacity: 0 }} // Entra desde abajo

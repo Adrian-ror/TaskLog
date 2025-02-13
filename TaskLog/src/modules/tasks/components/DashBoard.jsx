@@ -31,6 +31,7 @@ const DashBoard = () => {
           showCanceled ? setShowCanceled(false) : setShowCanceled(true)
         }}
         tasks={tasks}
+        onCanceled={() => setShowCanceled(false)}
       />
       <div className="flex-1 pl-8">
         <DashBoardHeader filteredTasks={filteredTasks} tasks={tasks} />

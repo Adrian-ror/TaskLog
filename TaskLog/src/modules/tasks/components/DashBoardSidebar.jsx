@@ -14,7 +14,12 @@ import PriorityButton from './PriorityButton.jsx'
 import TrashButton from './TrashButton.jsx'
 import ConfirmModal from './ConfirmModal.jsx'
 
-const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
+const DashBoardSidebar = ({
+  onPriorityChange,
+  onCanceledChange,
+  tasks,
+  onCanceled
+}) => {
   const [showMenu, setShowMenu] = useState(false)
   const clearCanceledTasks = useTaskStore((state) => state.clearCanceledTasks)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
@@ -22,13 +27,9 @@ const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
   return (
     <aside className="sidebar rounded-lg w-[300px] h-full z-45 overflow-y-auto flex flex-col justify-center lg:relative">
       <div className="bg-white rounded-xl shadow-lg mb-6 p-4 ">
-        <SidebarMenuItem label="Home" icon={faHouse} route="/" />
+        <SidebarMenuItem label="About" icon={faHouse} route="/about" />
 
-        <SidebarMenuItem
-          label="Dashboard"
-          icon={faTableColumns}
-          route="dash-board"
-        />
+        <SidebarMenuItem label="Dashboard" icon={faTableColumns} route="/" />
         <NotImplementedModal icon={faChartSimple} label="Chart" />
       </div>
 
@@ -83,7 +84,10 @@ const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
         />
         <PriorityButton
           label="View All"
-          onClick={() => onPriorityChange('All')}
+          onClick={() => {
+            onPriorityChange('All')
+            onCanceled()
+          }}
           icon={faEye}
         />
       </div>
@@ -108,6 +112,7 @@ const DashBoardSidebar = ({ onPriorityChange, onCanceledChange, tasks }) => {
 DashBoardSidebar.propTypes = {
   onPriorityChange: PropTypes.func.isRequired,
   onCanceledChange: PropTypes.func.isRequired,
-  tasks: PropTypes.array.isRequired
+  tasks: PropTypes.array.isRequired,
+  onCanceled: PropTypes.func.isRequired
 }
 export default DashBoardSidebar
