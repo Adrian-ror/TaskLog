@@ -6,12 +6,12 @@ const TaskList = ({ filteredTasks, editingTaskId, setEditingTaskId }) => {
   return (
     <>
       {filteredTasks.length === 0 ? (
-        <p className="text-center text-5xl bg-gray-200 shadow-lg border-2 border-gray-800 p-8 max-w-8xl mx-auto font-extrabold text-gray-800 italic rounded-lg shadow-md">
+        <p className="text-center text-xl bg-gray-200 shadow-lg border-2 border-gray-800 p-8 max-w-xl mx-auto font-extrabold text-gray-800 italic rounded-lg shadow-md">
           Señor, no hay tareas pendientes en su lista. <br /> ¿Me permitirá
           añadir algunas por usted?
         </p>
       ) : (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid  md:grid-cols-4 gap-12">
           {filteredTasks.map((task) => (
             <div key={task.id}>
               {editingTaskId === task.id ? (

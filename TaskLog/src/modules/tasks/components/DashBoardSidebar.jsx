@@ -25,16 +25,16 @@ const DashBoardSidebar = ({
   const [showConfirmModal, setShowConfirmModal] = useState(false)
 
   return (
-    <aside className="sidebar rounded-lg w-[300px] h-full z-45 overflow-y-auto flex flex-col justify-center lg:relative">
+    <aside className="sidebar rounded-lg w-[100px] h-full z-45 overflow-y-auto flex flex-col justify-center lg:relative">
       <div className="bg-white rounded-xl shadow-lg mb-6 p-4 ">
         <SidebarMenuItem label="About" icon={faHouse} route="/about" />
 
         <SidebarMenuItem label="Dashboard" icon={faTableColumns} route="/" />
-        <NotImplementedModal icon={faChartSimple} label="Chart" />
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <NotImplementedModal icon={faScrewdriverWrench} label="Settings" />
+
         {/*
              <a
           href="/user-profile"
@@ -66,7 +66,7 @@ const DashBoardSidebar = ({
         */}
       </div>
 
-      <div className="bg-white  mt-8 rounded-xl shadow-lg p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="bg-white mt-8 rounded-xl shadow-lg p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <PriorityButton
           label="Top Priority"
           onClick={() => onPriorityChange('Top')}

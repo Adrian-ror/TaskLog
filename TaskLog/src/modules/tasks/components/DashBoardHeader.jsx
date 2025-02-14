@@ -15,25 +15,25 @@ const DashboardHeader = ({ filteredTasks, tasks }) => {
 
   return (
     <div className="flex flex-row lg:flex-row gap-4 mb-6">
-      <div className="shadow-lg border-2 flex-1 bg-red-100 border-red-200 rounded-xl p-6 animate-fade-in">
-        <h2 className="text-4xl md:text-5xl text-red-900">
+      <div className="shadow-lg border-2 flex-1 bg-red-100 border-red-200 rounded-xl p-3 animate-fade-in">
+        <h2 className="text-2xl text-red-900">
           Welcome <strong>Dashboard</strong>
         </h2>
         <Clock />
       </div>
-      <div className="flex-1 shadow-lg border-2 bg-red-100 border-red-200 rounded-xl p-6 animate-fade-in">
-        <h2 className="flex items-center text-4xl md:text-5xl text-red-900">
+      <div className="flex-1 shadow-lg border-2 bg-red-100 border-red-200 rounded-xl p-3 animate-fade-in">
+        <h2 className="flex items-center text-2xl text-red-900">
           <FontAwesomeIcon
             icon={faTableList}
             className="text-red-900 mr-3 h-10"
           />
-          Task Inbox <strong className="ml-2">({filteredTasks.length})</strong>
+          Task <strong className="ml-2">Inbox ({filteredTasks.length})</strong>
         </h2>
-        <div className="mt-8 flex justify-between text-2xl text-gray-700">
+        <div className="mt-4 flex justify-between text-md text-gray-700">
           <div className="flex items-center space-x-4">
             <FontAwesomeIcon
               icon={faExclamationCircle}
-              className="h-7 text-blue-500"
+              className="h-5 text-blue-500"
             />
             <span className="font-bold">Pending:</span>
             <span className="font-bold">{pendingCount}</span>
@@ -41,7 +41,7 @@ const DashboardHeader = ({ filteredTasks, tasks }) => {
           <div className="flex items-center space-x-4">
             <FontAwesomeIcon
               icon={faCheckCircle}
-              className="h-7 text-green-500"
+              className="h-5 text-green-500"
             />
             <span className="font-bold">Completed:</span>
             <span className="font-bold">{completedCount}</span>

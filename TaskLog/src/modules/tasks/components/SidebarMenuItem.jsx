@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const SidebarMenuItem = ({ label, icon, route }) => (
   <Link
     to={route}
-    className="flex text-2xl font-bold items-center text-gray-600 hover:text-indigo-900 py-4 transition-all duration-300 hover:translate-x-1"
+    className="flex text-md font-bold items-center text-gray-600 hover:text-indigo-900 py-2 transition-all duration-300 hover:translate-x-1"
   >
     <span className="material-icons-outlined mr-2">
       <FontAwesomeIcon icon={icon} />

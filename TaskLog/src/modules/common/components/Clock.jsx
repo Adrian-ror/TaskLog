@@ -18,11 +18,11 @@ const Clock = () => {
     }
     requestAnimationFrame(update)
 
-    return () => cancelAnimationFrame(update) 
+    return () => cancelAnimationFrame(update)
   }, [])
 
   return (
-    <span className="inline-block mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-red-800">
+    <span className="inline-block mt-4 px-3 py-1 rounded-full text-lg font-bold text-white bg-red-800">
       {ctime}
     </span>
   )

@@ -10,122 +10,107 @@ import { useTaskStore } from '../../../store/useTaskStore.js'
 
 const TaskForm = () => {
   const [isOpen, setIsOpen] = useState(false)
-
-  const [title, setTitle] = useState('')
-
-  const [description, setDescription] = useState('')
-  const [priority, setPriority] = useState(priorities.TOP)
   const addTask = useTaskStore((state) => state.addTask)
 
-  const handlePriorityChange = (name) => {
-    if (priorities[name.toUpperCase()]) {
-      setPriority(priorities[name.toUpperCase()])
-    }
+  const [taskData, setTaskData] = useState({
+    title: '',
+    description: '',
+    priority: priorities.TOP
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setTaskData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handlePriorityChange = (value) => {
+    setTaskData((prev) => ({
+      ...prev,
+      priority: priorities[value.toUpperCase()] || priorities.TOP
+    }))
   }
 
   const handleSubmit = () => {
+    addTask({ ...taskData, status: statusOptions.PENDING })
+    setTaskData({ title: '', description: '', priority: priorities.TOP })
     setIsOpen(false)
-    addTask({ title, description, priority, status: statusOptions.PENDING })
-    setTitle('')
-    setDescription('')
-    setPriority(priorities.TOP)
   }
 
   return (
     <>
-      {/* Modal toggle */}
-
+      {/* Botón para abrir modal */}
       <button
-        onClick={(e) => {
-          e.preventDefault()
-          setIsOpen(true)
-        }}
-        className="px-8 py-2 border-2 rounded-lg bg-green-500 text-white"
+        onClick={() => setIsOpen(true)}
+        className="px-5 py-0.5 border-2 rounded-lg bg-green-500 text-white"
       >
-        <FontAwesomeIcon icon={faPlus} className="h-10 w-10" />
+        <FontAwesomeIcon icon={faPlus} className="h-7 w-7" />
       </button>
 
-      {/* Main modal */}
+      {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50">
-          <div className="relative p-4 w-full max-w-4xl bg-gray-300 rounded-lg shadow-lg ">
-            {/* Modal header */}
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-              <div className="flex items-center ">
-                <img
-                  className="h-20 w-auto rounded-lg mr-4"
-                  src="/inkwell.png"
-                  alt="Logo"
-                />
-              </div>
-              <h3 className="w-full  text-center text-4xl font-serif font-bold text-gray-900 ">
+          <div className="relative p-4 w-full max-w-xl bg-gray-300 rounded-lg shadow-lg">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 md:p-5 border-b border-gray-200 rounded-t">
+              <img
+                className="h-10 w-auto rounded-lg mr-4"
+                src="/inkwell.png"
+                alt="Logo"
+              />
+              <h3 className="w-full text-center text-xl font-serif font-bold text-gray-900">
                 How may I assist you, sir?
               </h3>
               <button
                 onClick={() => setIsOpen(false)}
-                type="button"
-                className="text-gray-800 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-lg w-10 h-10 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="text-gray-800 hover:bg-gray-200 rounded-lg text-lg w-10 h-10 flex justify-center items-center"
               >
-                <FontAwesomeIcon icon={faXmark} className="h-8" />
-                <span className="sr-only">Close modal</span>
+                <FontAwesomeIcon icon={faXmark} className="h-4" />
               </button>
             </div>
-            {/* Modal body */}
+
+            {/* Body */}
             <div className="p-4 md:p-5 space-y-4">
+              {/* Título */}
               <div>
-                <label
-                  htmlFor="first_name"
-                  className="block mb-2 text-2xl font-bold text-gray-900"
-                >
+                <label className="block mb-2 text-sm font-bold text-gray-900">
                   Title
                 </label>
                 <input
                   type="text"
-                  id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-2xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                  name="title"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Buy bread"
-                  value={title}
-                  onChange={(e) => {
-                    setTitle(e.target.value)
-                  }}
+                  value={taskData.title}
+                  onChange={handleChange}
                   required
                 />
               </div>
 
+              {/* Descripción */}
               <div>
-                <label
-                  htmlFor="description"
-                  className="block mb-2 text-2xl font-bold text-gray-900"
-                >
+                <label className="block mb-2 text-sm font-bold text-gray-900">
                   Description
                 </label>
                 <textarea
-                  id="description"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-2xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  name="description"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Write a description..."
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={taskData.description}
+                  onChange={handleChange}
                 />
               </div>
 
+              {/* Prioridad */}
               <div>
-                <label
-                  htmlFor="countries"
-                  className="block mb-2 text-2xl font-bold text-gray-700"
-                >
+                <label className="block mb-2 text-sm font-bold text-gray-700">
                   Priority
                 </label>
                 <select
-                  id="countries"
-                  value={priority.name}
+                  name="priority"
+                  value={taskData.priority.name}
                   onChange={(e) => handlePriorityChange(e.target.value)}
-                  className="bg-gray-50 font-bold border border-gray-300 text-gray-900 text-2xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="bg-gray-50 font-bold border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5 focus:ring-blue-500 focus:border-blue-500"
                 >
-                  {/*
-                  <option selected value={'N/A'}>
-                    Choose a priority level
-                  </option>
-                  */}
                   {Object.values(priorities).map((priority) => (
                     <option key={priority.id} value={priority.name}>
                       {priority.name}
@@ -134,17 +119,18 @@ const TaskForm = () => {
                 </select>
               </div>
             </div>
-            {/* Modal footer */}
-            <div className="flex justify-between items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+
+            {/* Footer */}
+            <div className="flex justify-between items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-xl px-8 py-4 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white bg-blue-800 hover:bg-blue-900 font-bold rounded-lg text-sm px-4 py-2"
               >
                 Close
               </button>
               <button
-                onClick={() => handleSubmit()}
-                className="text-white items-center bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-xl px-8 py-4 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={handleSubmit}
+                className="text-white bg-blue-800 hover:bg-blue-900 font-bold rounded-lg text-sm px-4 py-2 flex items-center"
               >
                 <FontAwesomeIcon icon={faFeatherPointed} className="mr-3 h-6" />
                 Save
